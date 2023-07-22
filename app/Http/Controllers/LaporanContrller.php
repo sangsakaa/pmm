@@ -22,6 +22,7 @@ class LaporanContrller extends Controller
             ->leftjoin('guru', 'guru.id', '=', 'laporan.guru_id')
             ->leftjoin('topik', 'topik.id', '=', 'laporan.topik_id')
             ->where('laporan.guru_id', $UserPermhs)
+            ->select('laporan.id', 'nama_topik', 'judul_topik')
             ->get();
         return view('admin.laporan.index', compact('dataLap'));
     }
@@ -59,10 +60,6 @@ class LaporanContrller extends Controller
                 'daftar_laporan.keterangan'
             ])
             ->get();
-
-
-
-
         // dd($dataModel);
         if ($dataModel->count() === 0) {
             $dataModel = Modul::query()
