@@ -1,5 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
+    @section('title', ' | Data Guru')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
       {{ __('Dashboard') }}
     </h2>
@@ -12,29 +13,36 @@
           <table class=" w-full">
             <thead>
               <tr class=" border">
-                <th class=" border">NUPTK</th>
-                <th class=" border">Nama</th>
-                <th class=" border  capitalize">Jenis Kelamin</th>
-                <th class=" border">Tempat Lahir</th>
-                <th class=" border">Tanggal Lahir</th>
+                <th class=" border px-1">NUPTK</th>
+                <th class=" border px-1">Nama</th>
+                <th class=" border px-1  capitalize">Jenis Kelamin</th>
+                <th class=" border px-1">Tempat Lahir</th>
+                <th class=" border px-1">Tanggal Lahir</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($dataGuru as $item)
-              <tr class=" border">
-                <td class=" border">
+              <tr class=" border text-sm">
+                <td class=" text-center border">
+
+                  @if($item->nuptk !== null)
                   {{$item->nuptk}}
+                  @else
+                  <span class=" text-red-600">
+                    Non NUPTK
+                  </span>
+                  @endif
                 </td>
-                <td class=" border">
+                <td class=" border px-1">
                   {{$item->nama_guru}}
                 </td>
-                <td class=" border text-center">
+                <td class=" border px-1 text-center">
                   {{$item->jenis_kelamin}}
                 </td>
-                <td class=" uppercase  text-center border">
+                <td class=" uppercase  text-center border px-1">
                   {{$item->tempat_lahir}}
                 </td>
-                <td class=" border text-center">
+                <td class=" border px-1 text-center">
 
                   {{ \Carbon\Carbon::parse($item->tanggal_lahir)->isoFormat(' DD MMMM Y') }}
                 </td>

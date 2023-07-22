@@ -12,6 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @role('super admin')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -24,6 +25,14 @@
                     <x-nav-link :href="route('data-modul')" :active="request()->routeIs('data-modul')">
                         {{ __('Modul') }}
                     </x-nav-link>
+                    @endrole
+                    @role('guru')
+                    <x-nav-link :href="route('daftar-laporan')" :active="request()->routeIs('daftar-laporan')">
+                        {{ __('LAPORAN PMM') }}
+                    </x-nav-link>
+
+                    @endrole
+
                 </div>
             </div>
 

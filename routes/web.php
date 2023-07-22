@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\LaporanContrller;
 use App\Http\Controllers\ModulController;
 use App\Http\Controllers\TopikController;
+use App\Http\Controllers\UserManagementController;
 use App\Models\Topik;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +33,9 @@ Route::get('data-guru', [GuruController::class, 'index'])->middleware(['auth'])-
 
 Route::get('data-topik', [TopikController::class, 'index'])->middleware(['auth'])->name('data-topik');
 Route::get('data-modul', [ModulController::class, 'index'])->middleware(['auth'])->name('data-modul');
+
+Route::get('daftar-laporan', [LaporanContrller::class, 'index'])->middleware(['auth'])->name('daftar-laporan');
+Route::get('laporan-pmm/{laporan}', [LaporanContrller::class, 'view'])->middleware(['auth'])->name('daftar-laporan');
+Route::post('laporan-pmm/{laporan}', [LaporanContrller::class, 'Lap'])->middleware(['auth'])->name('daftar-laporan');
+Route::post('daftar-laporan', [LaporanContrller::class, 'store'])->middleware(['auth'])->name('daftar-laporan');
+Route::post('dashboard', [UserManagementController::class, 'CreateUserGuru'])->middleware(['auth'])->name('dashboard');
