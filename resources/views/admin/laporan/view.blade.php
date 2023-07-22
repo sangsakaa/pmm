@@ -13,8 +13,8 @@
           <form action="/laporan-pmm/{{$laporan->id}}" method="post">
             @csrf
             <div>
-              <button class="bg-blue-700 text-white px-2 py-1 text-sm">Simpa Lap PMM</button>
-              <a href="/daftar-laporan" class="bg-blue-700 text-white px-2 py-1 text-sm">Kembali</a>
+              <button class="bg-purple-500 text-white px-2 py-1 text-sm">Simpa Lap PMM</button>
+              <a href="/daftar-laporan" class="bg-purple-500 text-white px-2 py-1 text-sm">Kembali</a>
             </div>
             <input hidden type="text" name="laporan_id" value="{{$laporan->id}}">
             <table class=" mt-2 w-full">
