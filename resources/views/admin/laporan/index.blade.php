@@ -42,7 +42,7 @@
                   </span>
 
                 </td>
-                <th class=" border px-1">Status</th>
+                <th class=" border px-1">Keterangan</th>
               </tr>
 
             </thead>
