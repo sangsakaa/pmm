@@ -23,6 +23,8 @@
               <tr class=" border mt-2">
                 <th rowspan="2" class=" border px-1">No</th>
                 <th rowspan="2" class=" border px-1">Topik</th>
+                <th rowspan="2" class=" border px-1">Judul Topik</th>
+
                 <th rowspan="2" class=" border px-1">Detail Modul</th>
                 <th rowspan="2" class=" border px-1">Total Modul</th>
                 <th colspan="3" class=" border px-1">Status</th>
@@ -42,39 +44,39 @@
                   </span>
 
                 </td>
-                <th class=" border px-1">Keterangan</th>
+                <th class=" border px-4">Ket</th>
               </tr>
 
             </thead>
             <tbody>
               @foreach ($dataLap as $item)
-              <tr class=" border text-sm">
-                <td class=" text-center border">
+              <tr class=" border px-1  text-sm">
+                <td class=" text-center border px-1 ">
                   {{$loop->iteration}}
 
                 </td>
-                <td class=" text-center border">
+                <td class=" text-center border px-1 ">
                   <a href="/laporan-pmm/{{$item->id}}">
-
                     {{$item->nama_topik}}</a>
                 </td>
-                <td class=" border px-1">
+                <td class=" font-semibold text-red-700 px-1   text-wrap text-left">
+                  {{$item->judul_topik}}
+                </td>
+                <td class=" border  px-1">
                   @foreach($item->Laporan as $lits)
                   @foreach($lits->Laporan as $lits)
                   <ul>
                     <li>
-                      {{$item->Laporan->where('keterangan', 'tuntas')->count()}} {{$lits->nama_modul}} - {{$lits->judul_modul}}
-
+                      {{$lits->nama_modul}} - {{$lits->judul_modul}}
                     </li>
-
                   </ul>
                   @endforeach
                   @endforeach
                 </td>
-                <td class=" uppercase  text-center border px-1">
+                <td class=" uppercase  text-center border  px-1">
                   {{$item->Laporan->count()}}
                 </td>
-                <td class="   text-center border px-1">
+                <td class="   text-center border  px-1">
                   <ul>
                     <li>
                       {{ $item->Laporan->where('keterangan', 'tuntas')->count() }}
@@ -82,15 +84,20 @@
 
                   </ul>
                 </td>
-                <td class="   text-center border px-1">
+                <td class="   text-center border  px-1">
                   <ul>
                     <li>
                       {{ $item->Laporan->where('keterangan', 'belum tuntas')->count() }}
                     </li>
                   </ul>
                 </td>
-                <td class="   text-center border px-1">
+                <td class="   text-center border  px-1">
 
+                  @if($item->Laporan->where('keterangan', 'tuntas')->count() === $item->Laporan->count())
+                  <span class=" capitalize text-green-700 font-semibold">sudah aksi nyata</span>
+                  @else
+                  <span class=" capitalize text-red-700 font-semibold">belum aksinyata</span>
+                  @endif
 
                 </td>
               </tr>
