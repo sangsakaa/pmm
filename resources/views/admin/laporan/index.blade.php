@@ -94,10 +94,13 @@
                 <td class="   text-center border  px-1">
 
                   @if($item->Laporan->where('keterangan', 'tuntas')->count() === $item->Laporan->count())
-                  <span class=" capitalize text-green-700 font-semibold">sudah aksi nyata</span>
+                  <span class="capitalize text-green-700 font-semibold">sudah aksi nyata</span>
+                  @elseif($item->Laporan->where('keterangan', null)->count() > 0)
+                  <span class="capitalize text-yellow-700 font-semibold">belum melaksanakan aksi</span>
                   @else
-                  <span class=" capitalize text-red-700 font-semibold">belum aksinyata</span>
+                  <span class="capitalize text-red-700 font-semibold">belum aksi nyata</span>
                   @endif
+
 
                 </td>
               </tr>
