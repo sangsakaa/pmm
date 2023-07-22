@@ -59,15 +59,28 @@
                   <a href="/laporan-pmm/{{$item->id}}">
                     {{$item->nama_topik}}</a>
                 </td>
-                <td class=" font-semibold text-red-700 px-1   text-wrap text-left">
+                <td class=" font-semibold text-red-700 px-1 w-1/4   text-wrap text-left">
                   {{$item->judul_topik}}
                 </td>
                 <td class=" border  px-1">
-                  @foreach($item->Laporan as $lits)
-                  @foreach($lits->Laporan as $lits)
+                  @foreach($item->Laporan as $lit)
+
+                  @foreach($lit->Laporan as $lits)
                   <ul>
-                    <li>
-                      {{$lits->nama_modul}} - {{$lits->judul_modul}}
+                    <li class=" flex">
+                      @if($lit->keterangan == "tuntas")
+                      <span class=" font-semibold text-green-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+
+                      </span>
+                      @else
+                      <span class=" text-red-700"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </span>
+                      @endif {{$lit->nama_modul}} {{$lits->judul_modul}}
                     </li>
                   </ul>
                   @endforeach
@@ -94,13 +107,10 @@
                 <td class="   text-center border  px-1">
 
                   @if($item->Laporan->where('keterangan', 'tuntas')->count() === $item->Laporan->count())
-                  <span class="capitalize text-green-700 font-semibold">sudah aksi nyata</span>
-                  @elseif($item->Laporan->where('keterangan', null)->count() > 0)
-                  <span class="capitalize text-yellow-700 font-semibold">belum melaksanakan aksi</span>
+                  <span class=" capitalize text-green-700 font-semibold">sudah aksi nyata</span>
                   @else
-                  <span class="capitalize text-red-700 font-semibold">belum aksi nyata</span>
+                  <span class=" capitalize text-red-700 font-semibold">belum aksi nyata</span>
                   @endif
-
 
                 </td>
               </tr>
