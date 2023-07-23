@@ -24,27 +24,20 @@
                 <th rowspan="2" class=" border px-1">No</th>
                 <th rowspan="2" class=" border px-1">Topik</th>
                 <th rowspan="2" class=" border px-1">Judul Topik</th>
-
                 <th rowspan="2" class=" border px-1">Detail Modul</th>
-                <th rowspan="2" class=" border px-1">Total Modul</th>
-                <th colspan="3" class=" border px-1">Status</th>
+                <th rowspan="2" class=" border px-1">Jumlah </th>
+                <th colspan="2" class=" border px-1">Status Modul</th>
+                <th rowspan="2" class=" border px-1">Ket</th>
               </tr>
               <tr class=" border mt-2">
                 <td class=" border px-2  w-7 ">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="  text-green-700 w-6 h-6 font-semibold">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-
+                  T
                 </td>
                 <td class=" border px-2  w-7 text-center ">
                   <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-red-700 font-semibold w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    BT
                   </span>
-
                 </td>
-                <th class=" border px-4">Ket</th>
               </tr>
 
             </thead>
@@ -76,11 +69,12 @@
                         </svg>
 
                       </span>
-                      @else
+                      @elseif($lit->keterangan == "belum tuntas")
                       <span class=" text-red-700"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </span>
+
                       @endif {{$lits->nama_modul}} - {{$lits->judul_modul}}
                     </li>
                   </ul>

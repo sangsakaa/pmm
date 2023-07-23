@@ -44,6 +44,10 @@ class LaporanContrller extends Controller
     public function view(Laporan $laporan)
     {
         // dd($laporan);
+        $title = $laporan->query()
+            ->join('guru', 'guru.id', 'laporan.guru_id')
+            ->join('topik', 'topik.id', 'laporan.topik_id')
+            ->where('laporan.guru_id', $laporan->guru_id)->first();
         $UserPermhs = Auth::user()->guru_id;
         $dataModel = Modul::query()
             ->leftJoin('daftar_laporan', 'daftar_laporan.modul_id', '=', 'modul.id')
@@ -66,7 +70,7 @@ class LaporanContrller extends Controller
 
                 ->where('topik_id', $laporan->topik_id)->get();
         }
-        return view('admin.laporan.view', compact('laporan', 'dataModel'));
+        return view('admin.laporan.view', compact('laporan', 'dataModel', 'title'));
     }
     public function Lap(Request $request)
     {
