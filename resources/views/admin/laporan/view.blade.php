@@ -41,7 +41,7 @@
                     {{$item->judul_modul}}
                   </td>
                   <td class=" border px-1">
-                    <select name="keterangan[{{$item->id}}]" id="" class="py-1 w-full">
+                    <select name="keterangan[{{$item->id}}]" id="" class="py-1 w-full px-1">
                       <option value="belum tuntas" {{ $item->keterangan === "belum tuntas" || $item->keterangan === null ? 'selected' : '' }}>Belum Tuntas</option>
                       <option value="tuntas" {{ $item->keterangan === "tuntas" ? 'selected' : '' }} class="{{ $item->keterangan === 'tuntas' ? 'text-green-700' : 'text-red-700' }}">Tuntas</option>
                     </select>

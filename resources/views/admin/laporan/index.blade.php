@@ -62,10 +62,11 @@
                 <td class=" font-semibold text-red-700 px-1 w-1/4   text-wrap text-left">
                   {{$item->judul_topik}}
                 </td>
-                <td class=" border  px-1">
+                <td class=" border  px-1 py-1">
                   @foreach($item->Laporan as $lit)
 
                   @foreach($lit->Laporan as $lits)
+
                   <ul>
                     <li class=" flex">
                       @if($lit->keterangan == "tuntas")
@@ -80,7 +81,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </span>
-                      @endif {{$lit->nama_modul}} {{$lits->judul_modul}}
+                      @endif {{$lits->nama_modul}} - {{$lits->judul_modul}}
                     </li>
                   </ul>
                   @endforeach
@@ -106,11 +107,15 @@
                 </td>
                 <td class="   text-center border  px-1">
 
-                  @if($item->Laporan->where('keterangan', 'tuntas')->count() === $item->Laporan->count())
-                  <span class=" capitalize text-green-700 font-semibold">sudah aksi nyata</span>
+                  @if($item->Laporan->where('keterangan', 'tuntas')->count() && $item->Laporan->where('keterangan', 'belum tuntas')->count() === 0 )
+                  <span class=" text-green-900 font-semibold ">Sudah Aksi Nyata</span>
+                  @elseif( $item->Laporan->where('keterangan', 'tuntas')->count() >= $item->Laporan->where('keterangan', 'belum tuntas')->count())
+
+                  <span class=" text-red-700 font-semibold ">Belum Aksi Nyata</span>
                   @else
-                  <span class=" capitalize text-red-700 font-semibold">belum aksi nyata</span>
+                  <span class=" text-red-700 font-semibold ">Belum Aksi Nyata</span>
                   @endif
+
 
                 </td>
               </tr>
