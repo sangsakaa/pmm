@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <title>PMM @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('img/sma.png') }}" type="image/x-icon">
 
