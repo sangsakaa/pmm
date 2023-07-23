@@ -44,10 +44,14 @@ class LaporanContrller extends Controller
     public function view(Laporan $laporan)
     {
         // dd($laporan);
-        $title = $laporan->query()
-            ->join('guru', 'guru.id', 'laporan.guru_id')
-            ->join('topik', 'topik.id', 'laporan.topik_id')
-            ->where('laporan.guru_id', $laporan->guru_id)->first();
+        $UserPermhs = Auth::user()->guru_id;
+        $title = DB::table('laporan')
+        ->join('guru', 'guru.id', 'laporan.guru_id')
+        ->join('topik', 'topik.id', 'laporan.topik_id')
+        ->where('laporan.guru_id', $UserPermhs) // ganti 'guru_id' dengan 'user_id' jika 'user_id' adalah kolom yang menyimpan id mahasiswa pada tabel laporan
+        ->where('topik.id', $laporan->topik_id) // ganti $topik_id dengan id topik yang ingin dicari
+        ->first();
+
         $UserPermhs = Auth::user()->guru_id;
         $dataModel = Modul::query()
             ->leftJoin('daftar_laporan', 'daftar_laporan.modul_id', '=', 'modul.id')
