@@ -47,7 +47,6 @@
                     </span>
                   </td>
                 </tr>
-
               </thead>
               <tbody>
                 @foreach ($rekapLap as $item)

@@ -2,14 +2,23 @@
     @section('title', ' | Login ' )
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+
+        </x-slot>
+        <a href="/">
+            <div class=" mb-4">
                 <center>
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                    <p class=" uppercase text-center">Platform Merdeka Mengajar</p>
+                    <img src="{{ asset('img/sma.png') }}" alt="" width="90">
+                    <p class=" uppercase text-center">SISTEM PEMANTAUAN GURU
+                    </p>
+                    <p class=" uppercase text-center">
+                        PLATFORM MERDEKA MENGAJAR
+                    </p>
+                    <p class=" uppercase text-center">
+                        SMA WAHIDIYAH KEDIRI</p>
                     <p class="  capitalize text-xs text-center">Gang Pondok, Desa Bandar Lor, Kec Mojoroto, Kota Kediri, Jawa Timur</p>
                 </center>
-            </a>
-        </x-slot>
+            </div>
+        </a>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -21,6 +30,7 @@
             @csrf
 
             <!-- Email Address -->
+
             <div>
                 <x-label for="email" :value="__('Email')" />
 
