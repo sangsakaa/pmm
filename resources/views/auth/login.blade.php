@@ -15,7 +15,7 @@
                     </p>
                     <p class=" uppercase text-center">
                         SMA WAHIDIYAH KEDIRI</p>
-                    <p class="  capitalize text-xs text-center">Gang Pondok, Desa Bandar Lor, Kec Mojoroto, Kota Kediri, Jawa Timur</p>
+
                 </center>
             </div>
         </a>
