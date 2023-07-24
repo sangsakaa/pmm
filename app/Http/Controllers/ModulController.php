@@ -34,6 +34,5 @@ class ModulController extends Controller
         $modul->judul_modul = $request->judul_modul;
         $modul->save();
         return redirect()->back();
-
     }
 }
