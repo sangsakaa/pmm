@@ -12,4 +12,16 @@ class TopikController extends Controller
         $dataTopik = Topik::all();
         return view('admin.topik.index', compact('dataTopik'));
     }
+    public function add()
+    {
+        return view('admin.topik.add');
+    }
+    public function store(Request $request)
+    {
+        $topik = new Topik();
+        $topik->nama_topik = $request->nama_topik;
+        $topik->judul_topik = $request->judul_topik;
+        $topik->save();
+        return redirect()->back();
+    }
 }

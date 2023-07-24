@@ -40,17 +40,24 @@ class LaporanContrller extends Controller
     }
     public function store(Request $request)
     {
-        $datatopik = Topik::all();
         $dataGuru = Guru::all();
+        $datatopik = Topik::all();
 
         foreach ($dataGuru as $guru) {
             foreach ($datatopik as $topik) {
-                $laporan = new Laporan();
-                $laporan->guru_id = $guru->id;
-                $laporan->topik_id = $topik->id;
-                $laporan->save();
+                // Check if the combination of guru_id and topik_id already exists
+                $existingLaporan = Laporan::where('guru_id', $guru->id)->where('topik_id', $topik->id)->first();
+
+                if (!$existingLaporan) {
+                    // If the combination does not exist, create a new entry
+                    $laporan = new Laporan();
+                    $laporan->guru_id = $guru->id;
+                    $laporan->topik_id = $topik->id;
+                    $laporan->save();
+                }
             }
         }
+        
         return redirect()->back();
     }
     public function view(Laporan $laporan)

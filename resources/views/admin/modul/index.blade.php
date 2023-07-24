@@ -10,6 +10,11 @@
     <div class=" max-w-full mx-auto sm:px-2 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
+          <div class=" py-1">
+            <a href="/add-modul" class=" bg-blue-600 text-white py-1 px-2">
+              Add Modul
+            </a>
+          </div>
           <table class=" w-full">
             <thead>
               <tr class=" border">

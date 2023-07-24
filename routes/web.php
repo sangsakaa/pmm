@@ -32,7 +32,15 @@ require __DIR__ . '/auth.php';
 Route::get('data-guru', [GuruController::class, 'index'])->middleware(['auth'])->name('data-guru');
 
 Route::get('data-topik', [TopikController::class, 'index'])->middleware(['auth'])->name('data-topik');
+Route::get('add-topik', [TopikController::class, 'add'])->middleware(['auth'])->name('add-topik');
+Route::post('add-topik', [TopikController::class, 'store'])->middleware(['auth'])->name('add-topik');
+
+
+
+
+
 Route::get('data-modul', [ModulController::class, 'index'])->middleware(['auth'])->name('data-modul');
+Route::get('add-modul', [ModulController::class, 'add'])->middleware(['auth'])->name('add-modul');
 
 Route::get('daftar-laporan', [LaporanContrller::class, 'index'])->middleware(['auth'])->name('daftar-laporan');
 Route::get('laporan-pmm/{laporan}', [LaporanContrller::class, 'view'])->middleware(['auth'])->name('daftar-laporan');
