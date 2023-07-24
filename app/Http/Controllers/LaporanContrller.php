@@ -27,7 +27,8 @@ class LaporanContrller extends Controller
         $rekapLap = Laporan::query()
         ->leftjoin('guru', 'guru.id', '=', 'laporan.guru_id')
         ->leftjoin('topik', 'topik.id', '=', 'laporan.topik_id')
-        ->select('laporan.id', 'nama_topik', 'judul_topik', 'nama_guru');
+        ->select('laporan.id', 'nama_topik', 'judul_topik', 'nama_guru')
+        ->orderby('laporan.updated_at');
         if (request('cari')) {
             $rekapLap->where('nama_guru', 'like', '%' . request('cari') . '%');
             $rekapLap->Orwhere('nama_topik', 'like', '%' . request('cari') . '%');

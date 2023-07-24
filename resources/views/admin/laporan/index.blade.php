@@ -5,6 +5,15 @@
       {{ __('Dashboard Laporan') }}
     </h2>
   </x-slot>
+  <script>
+    function printContent(el) {
+      var fullbody = document.body.innerHTML;
+      var printContent = document.getElementById(el).innerHTML;
+      document.body.innerHTML = printContent;
+      window.print();
+      document.body.innerHTML = fullbody;
+    }
+  </script>
   <div class="py-2">
     <div class=" max-w-full mx-auto sm:px-2 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -25,8 +34,13 @@
                     Cari </button>
                 </form>
               </div>
+              <div>
+                <button class=" bg-red-600 py-1 dark:bg-purple-600   w-full sm:w-40 rounded-sm hover:bg-purple-600 text-white px-4 " onclick="printContent('blanko')">
+                  Cetak
+                </button>
+              </div>
             </div>
-            <div class=" ">
+            <div id="blanko" class=" ">
               <table class=" mt-1 w-full">
                 <thead>
                   <tr class=" border mt-2">
