@@ -41,7 +41,7 @@
               </div>
             </div>
             <div id="blanko" class=" ">
-              <!-- <table class=" mt-1 w-full">
+              <table class=" mt-1 w-full">
                 <thead>
                   <tr class=" border mt-2">
                     <th rowspan="2" class=" border px-1">No</th>
@@ -134,9 +134,9 @@
                   </tr>
                   @endforeach
                 </tbody>
-              </table> -->
-              <table class=" w-full">
-                <!-- header table -->
+              </table>
+              <!-- <table class=" w-full">
+               
                 <thead>
                   <tr class=" border px-1">
                     <th class=" border px-1">Nama Guru</th>
@@ -156,7 +156,7 @@
                   @endforeach
                 </tbody>
                 </thead>
-              </table>
+              </table> -->
             </div>
             <div class=" py-2">
             </div>
