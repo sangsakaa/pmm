@@ -14,7 +14,7 @@
             <div class=" grid grid-cols-1 gap-1">
               <label for="">Nama Topik</label>
               <select name="topik_id" id="" class=" w-1/2 py-1 px-1 capitalize">
-                @foreach($dataTopikTidakAdaDiLap as $list)
+                @foreach($dataTopik as $list)
                 <option value="{{ $list->id }}">{{ $list->nama_topik }} - {{$list->judul_topik}}</option>
                 @endforeach
               </select>

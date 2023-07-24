@@ -18,12 +18,12 @@ class ModulController extends Controller
     {
         $dataLap = Laporan::query()->get();
         $dataTopik = Topik::query()->get();
-        // Mengambil array berisi topik_id yang ada pada $dataLap
-        $topikIDsInDataLap = $dataLap->pluck('topik_id')->toArray();
+        // // Mengambil array berisi topik_id yang ada pada $dataLap
+        // $topikIDsInDataLap = $dataLap->pluck('topik_id')->toArray();
 
-        // Filter dataTopik yang tidak ada pada $dataLap berdasarkan topik_id dan id
-        $dataTopikTidakAdaDiLap = $dataTopik->whereNotIn('id', $topikIDsInDataLap);
-        return view('admin.modul.add', compact('dataTopikTidakAdaDiLap'));
+        // // Filter dataTopik yang tidak ada pada $dataLap berdasarkan topik_id dan id
+        // $dataTopikTidakAdaDiLap = $dataTopik->whereNotIn('id', $topikIDsInDataLap);
+        return view('admin.modul.add', compact('dataTopik'));
     }
     public function store(Request $request)
     {
