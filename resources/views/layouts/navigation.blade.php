@@ -25,6 +25,9 @@
                     <x-nav-link :href="route('data-modul')" :active="request()->routeIs('data-modul')">
                         {{ __('Modul') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('daftar-laporan')" :active="request()->routeIs('daftar-laporan')">
+                        {{ __('Laporan') }}
+                    </x-nav-link>
                     @endrole
                     @role('guru')
                     <x-nav-link :href="route('daftar-laporan')" :active="request()->routeIs('daftar-laporan')">

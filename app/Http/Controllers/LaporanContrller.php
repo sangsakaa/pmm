@@ -24,7 +24,19 @@ class LaporanContrller extends Controller
             ->where('laporan.guru_id', $UserPermhs)
             ->select('laporan.id', 'nama_topik', 'judul_topik')
             ->get();
-        return view('admin.laporan.index', compact('dataLap'));
+        $rekapLap = Laporan::query()
+        ->leftjoin('guru', 'guru.id', '=', 'laporan.guru_id')
+        ->leftjoin('topik', 'topik.id', '=', 'laporan.topik_id')
+        ->select('laporan.id', 'nama_topik', 'judul_topik', 'nama_guru');
+        if (request('cari')) {
+            $rekapLap->where('nama_guru', 'like', '%' . request('cari') . '%');
+            $rekapLap->Orwhere('nama_topik', 'like', '%' . request('cari') . '%');
+        }
+        return view('admin.laporan.index', [
+            'dataLap' => $dataLap,
+            'rekapLap' => $rekapLap->paginate(8)
+
+        ]);
     }
     public function store(Request $request)
     {
