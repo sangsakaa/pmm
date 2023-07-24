@@ -18,7 +18,6 @@ class ModulController extends Controller
     {
         $dataLap = Laporan::query()->get();
         $dataTopik = Topik::query()->get();
-
         // Mengambil array berisi topik_id yang ada pada $dataLap
         $topikIDsInDataLap = $dataLap->pluck('topik_id')->toArray();
 
