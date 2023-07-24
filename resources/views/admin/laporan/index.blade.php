@@ -41,7 +41,7 @@
               </div>
             </div>
             <div id="blanko" class=" ">
-              <table class=" mt-1 w-full">
+              <!-- <table class=" mt-1 w-full">
                 <thead>
                   <tr class=" border mt-2">
                     <th rowspan="2" class=" border px-1">No</th>
@@ -134,6 +134,28 @@
                   </tr>
                   @endforeach
                 </tbody>
+              </table> -->
+              <table class=" w-full">
+                <!-- header table -->
+                <thead>
+                  <tr class=" border px-1">
+                    <th class=" border px-1">Nama Guru</th>
+                    <th class=" border px-1">Topik</th>
+                    <th class=" border px-1">Modul</th>
+                    <th class=" border px-1">Keterangan</th>
+                  </tr>
+                <tbody>
+                  @foreach($lap as $item)
+                  <tr>
+                    <td class=" border px-1 py-1">{{$item->nama_guru}}</td>
+                    <td class=" border px-1 py-1">{{$item->nama_topik}} -{{$item->judul_topik}} </td>
+                    <td class=" border px-1 py-1">{{$item->nama_modul}} - {{$item->judul_modul}}</td>
+                    <td class=" border px-1 py-1">{{$item->keterangan}}</td>
+
+                  </tr>
+                  @endforeach
+                </tbody>
+                </thead>
               </table>
             </div>
             <div class=" py-2">
