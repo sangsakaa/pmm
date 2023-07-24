@@ -79,22 +79,23 @@ class LaporanContrller extends Controller
         ->where('laporan.guru_id', $UserPermhs) // ganti 'guru_id' dengan 'user_id' jika 'user_id' adalah kolom yang menyimpan id mahasiswa pada tabel laporan
         ->where('topik.id', $laporan->topik_id) // ganti $topik_id dengan id topik yang ingin dicari
         ->first();
-
         $UserPermhs = Auth::user()->guru_id;
         $dataModel = Modul::query()
             ->leftJoin('daftar_laporan', 'daftar_laporan.modul_id', '=', 'modul.id')
             ->join('topik', 'topik.id', '=', 'modul.topik_id')
             ->join('laporan', function ($join) use ($laporan) {
                 $join->on('laporan.topik_id', '=', 'topik.id')
-                    ->where('laporan.id', '=', $laporan->id);
+            ->where('laporan.id', '=', $laporan->id);
             })
             ->select([
                 'modul.id',
                 'modul.topik_id',
                 'modul.nama_modul',
                 'modul.judul_modul',
-                'daftar_laporan.keterangan'
+            'daftar_laporan.keterangan',
+            'daftar_laporan.laporan_id'
             ])
+            ->where('daftar_laporan.laporan_id', $laporan->id)
             ->get();
         // dd($dataModel);
         if ($dataModel->count() === 0) {

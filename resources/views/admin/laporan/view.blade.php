@@ -32,6 +32,7 @@
               <a href="/daftar-laporan" class="bg-purple-500 text-white px-2 py-1 text-sm">Kembali</a>
             </div>
             <input hidden type="text" name="laporan_id" value="{{$laporan->id}}">
+
             <table class=" mt-2 w-full">
               <thead>
                 <tr class=" border mt-2">
@@ -47,14 +48,15 @@
                 <tr class=" border text-sm">
                   <td class=" text-center border">
                     {{$loop->iteration}}
-
                   </td>
                   <td class=" border text-center px-1">
                     {{$item->nama_modul}}
                   </td>
                   <td class=" border px-1">
                     {{$item->judul_modul}}
+
                   </td>
+
                   <td class=" border px-1">
                     <select name="keterangan[{{$item->id}}]" id="" class="py-1 w-full px-1">
                       <option value="belum tuntas" {{ $item->keterangan === "belum tuntas" || $item->keterangan === null ? 'selected' : '' }}>Belum Tuntas</option>
