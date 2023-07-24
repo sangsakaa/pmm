@@ -9,7 +9,7 @@
     <div class=" max-w-full mx-auto sm:px-2 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          <form action="/add-topik" method="post">
+          <form action="/add-modul" method="post">
             @csrf
             <div class=" grid grid-cols-1 gap-1">
               <label for="">Nama Topik</label>

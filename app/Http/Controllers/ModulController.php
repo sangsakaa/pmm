@@ -24,10 +24,16 @@ class ModulController extends Controller
 
         // Filter dataTopik yang tidak ada pada $dataLap berdasarkan topik_id dan id
         $dataTopikTidakAdaDiLap = $dataTopik->whereNotIn('id', $topikIDsInDataLap);
-
-
-
-
         return view('admin.modul.add', compact('dataTopikTidakAdaDiLap'));
+    }
+    public function store(Request $request)
+    {
+        $modul = new Modul();
+        $modul->topik_id = $request->topik_id;
+        $modul->nama_modul = $request->nama_modul;
+        $modul->judul_modul = $request->judul_modul;
+        $modul->save();
+        return redirect()->back();
+
     }
 }
