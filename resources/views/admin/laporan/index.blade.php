@@ -30,7 +30,7 @@
               <thead>
                 <tr class=" border mt-2">
                   <th rowspan="2" class=" border px-1">No</th>
-                  <th rowspan="2" class=" border px-1">Nama Guru</th>
+                  <th rowspan="2" class=" border px-1    w-36">Nama Guru</th>
                   <th rowspan="2" class=" border px-1">Judul Topik</th>
                   <th rowspan="2" class=" border px-1">Detail Modul</th>
                   <th rowspan="2" class=" border px-1">Jumlah </th>
@@ -124,7 +124,6 @@
               </tbody>
             </table>
             <div class=" py-2">
-              {{$rekapLap}}
             </div>
           </div>
           @endrole

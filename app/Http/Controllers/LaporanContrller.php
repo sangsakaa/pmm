@@ -34,7 +34,7 @@ class LaporanContrller extends Controller
         }
         return view('admin.laporan.index', [
             'dataLap' => $dataLap,
-            'rekapLap' => $rekapLap->paginate(8)
+            'rekapLap' => $rekapLap->get()
 
         ]);
     }
