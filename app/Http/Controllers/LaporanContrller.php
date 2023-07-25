@@ -37,12 +37,16 @@ class LaporanContrller extends Controller
             ->leftjoin('guru', 'guru.id', '=', 'laporan.guru_id')
             ->leftjoin('topik', 'topik.id', '=', 'laporan.topik_id')
             ->leftjoin('modul', 'modul.id', '=', 'daftar_laporan.modul_id')
-            ->where('keterangan', 'tuntas')
-            ->get();
+            // ->where('keterangan', 'tuntas')
+        ;
+        if (request('cari')) {
+            $lap->where('nama_guru', 'like', '%' . request('cari') . '%');
+            $lap->Orwhere('nama_topik', 'like', '%' . request('cari') . '%');
+        }
         return view('admin.laporan.index', [
             'dataLap' => $dataLap,
             'rekapLap' => $rekapLap->get(),
-            'lap' => $lap
+            'lap' => $lap->get()
 
         ]);
         

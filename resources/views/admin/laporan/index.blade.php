@@ -41,7 +41,7 @@
               </div>
             </div>
             <div id="blanko" class=" ">
-              <table class=" mt-1 w-full">
+              <!-- <table class=" mt-1 w-full">
                 <thead>
                   <tr class=" border mt-2">
                     <th rowspan="2" class=" border px-1">No</th>
@@ -134,29 +134,68 @@
                   </tr>
                   @endforeach
                 </tbody>
-              </table>
-              <!-- <table class=" w-full">
-               
+              </table> -->
+              <table class=" mt-2 w-full">
                 <thead>
                   <tr class=" border px-1">
+                    <th class=" border px-1">No</th>
                     <th class=" border px-1">Nama Guru</th>
                     <th class=" border px-1">Topik</th>
                     <th class=" border px-1">Modul</th>
                     <th class=" border px-1">Keterangan</th>
                   </tr>
+                </thead>
                 <tbody>
-                  @foreach($lap as $item)
-                  <tr>
-                    <td class=" border px-1 py-1">{{$item->nama_guru}}</td>
-                    <td class=" border px-1 py-1">{{$item->nama_topik}} -{{$item->judul_topik}} </td>
-                    <td class=" border px-1 py-1">{{$item->nama_modul}} - {{$item->judul_modul}}</td>
-                    <td class=" border px-1 py-1">{{$item->keterangan}}</td>
+                  @php
+                  // Preprocess the data to calculate the module counts for each group (nama_guru)
+                  $groupedData = [];
+                  foreach ($lap as $item) {
+                  $key = $item->nama_guru;
+                  if (!isset($groupedData[$key])) {
+                  $groupedData[$key] = [
+                  'nama_guru' => $item->nama_guru,
+                  'rowspan' => 0, // Initialize rowspan to 0
+                  ];
+                  }
+                  $groupedData[$key]['rowspan']++; // Increment the rowspan for each group
+                  }
+                  @endphp
 
+                  @foreach($groupedData as $key => $group)
+                  <tr>
+                    <th class=" border " rowspan="{{ $group['rowspan'] }}">
+                      {{$loop->iteration}}
+                    </th>
+                    <td class="border px-1 py-1   border-green-700" rowspan="{{ $group['rowspan'] }}">{{ $group['nama_guru'] }}</td>
+                    @php $first = true; @endphp
+                    @foreach($lap as $item)
+                    @if($item->nama_guru === $key)
+                    @if(!$first)
+                  <tr class=" border  border-green-700">
+                    @endif
+                    <td class="border px-1 py-1">{{ $item->nama_topik }}</td>
+                    <td class="border px-1 py-1">{{ $item->nama_modul }} - {{ $item->judul_modul }}</td>
+                    <td class="border px-1 py-1">
+                      @if($item->Laporan->where('keterangan', 'tuntas')->count() && $item->Laporan->where('keterangan', 'belum tuntas')->count() === 0 )
+                      <span class=" text-green-900 font-semibold ">Sudah Aksi Nyata</span>
+                      @elseif( $item->Laporan->where('keterangan', 'tuntas')->count() >= $item->Laporan->where('keterangan', 'belum tuntas')->count())
+                      <span class=" text-red-700 font-semibold ">Belum Aksi Nyata</span>
+                      @else
+                      <span class=" text-red-700 font-semibold ">Belum Aksi Nyata</span>
+                      @endif
+                    </td>
+                  </tr>
+                  @php $first = false; @endphp
+                  @endif
+                  @endforeach
                   </tr>
                   @endforeach
+
+
+
                 </tbody>
-                </thead>
-              </table> -->
+
+              </table>
             </div>
             <div class=" py-2">
             </div>
