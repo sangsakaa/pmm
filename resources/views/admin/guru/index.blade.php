@@ -10,7 +10,11 @@
     <div class=" max-w-full mx-auto sm:px-2 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200 overflow-auto">
-          <table class=" w-full">
+          <div>
+            <!-- <button class=" hover:bg-blue-900 bg-blue-600 px-2 py-1 text-white capitalize">buat Akun Guru</button> -->
+            <a href="/form-guru" class=" hover:bg-blue-900 bg-blue-600 px-2 py-1 text-white capitalize">Tambah Guru</a>
+          </div>
+          <table class=" mt-2 w-full">
             <thead>
               <tr class=" border">
                 <th class=" border px-1">NUPTK</th>

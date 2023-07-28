@@ -3,6 +3,7 @@
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LaporanContrller;
 use App\Http\Controllers\ModulController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TopikController;
 use App\Http\Controllers\UserManagementController;
 
@@ -30,12 +31,18 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('data-guru', [GuruController::class, 'index'])->middleware(['auth'])->name('data-guru');
+Route::get('form-guru', [GuruController::class, 'create'])->middleware(['auth']);
 
 Route::get('data-topik', [TopikController::class, 'index'])->middleware(['auth'])->name('data-topik');
 Route::get('add-topik', [TopikController::class, 'add'])->middleware(['auth'])->name('add-topik');
 Route::post('add-topik', [TopikController::class, 'store'])->middleware(['auth'])->name('add-topik');
 
-
+// 
+Route::get('/role-management', [RoleController::class, 'roleManagement'])->middleware(['auth'])->name('role-management');
+Route::post('/role-management', [RoleController::class, 'store'])->middleware(['auth']);
+Route::get('/has-role', [RoleController::class, 'HasRole'])->middleware(['auth'])->name('has-role');
+Route::post('/has-role', [RoleController::class, 'storeHasRole'])->middleware(['auth'])->name('has-role');
+Route::delete('/has-role/{has_Role:model_id}', [RoleController::class, 'RemoveRole'])->middleware(['auth']);
 
 
 
