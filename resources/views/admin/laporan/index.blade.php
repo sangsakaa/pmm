@@ -16,8 +16,8 @@
   </script>
   <div class="py-2">
     <div class=" max-w-full mx-auto sm:px-2 lg:px-2">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200 overflow-auto">
           <div>
             <div class=" flex gap-2">
@@ -43,7 +43,7 @@
               </div>
             </div>
             <div id="blanko" class=" ">
-              @role('pengawas')
+
               <table class=" mt-1 w-full">
                 <thead>
                   <tr class=" border mt-2">
@@ -138,7 +138,7 @@
                   @endforeach
                 </tbody>
               </table>
-              @endrole
+
               <!-- <table class=" mt-2 w-full">
                 <thead>
                   <tr class=" border px-1">
@@ -205,7 +205,7 @@
             </div>
           </div>
         </div>
-        @endrole
+
         @role('guru')
         <div class=" p-2">
           <table class=" w-full">
@@ -304,6 +304,7 @@
             </tbody>
           </table>
         </div>
+        @endrole
 
       </div>
     </div>
