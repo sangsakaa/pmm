@@ -17,16 +17,18 @@
   <div class="py-2">
     <div class=" max-w-full mx-auto sm:px-2 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        @role('super admin')
+
         <div class="p-6 bg-white border-b border-gray-200 overflow-auto">
           <div>
             <div class=" flex gap-2">
+              @role('super admin')
               <div>
                 <form action="/daftar-laporan" method="post">
                   @csrf
                   <button class="bg-blue-700 text-white px-2 py-1 text-sm">BUAT PMM</button>
                 </form>
               </div>
+              @endrole
               <div>
                 <form action="/daftar-laporan" method="get" class="  text-sm gap-1 flex">
                   <input type="text" name="cari" value="{{ request('cari') }}" class=" dark:bg-dark-bg border border-green-800 text-green-800 rounded-md  py-0.5 " placeholder=" Cari .." autofocus>
@@ -302,7 +304,7 @@
             </tbody>
           </table>
         </div>
-        @endrole
+
       </div>
     </div>
   </div>
