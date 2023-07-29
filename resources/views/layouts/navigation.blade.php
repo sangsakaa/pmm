@@ -38,7 +38,7 @@
                     </x-nav-link>
 
                     @endrole
-                    role('pengawas')
+                    @role('pengawas')
                     <x-nav-link :href="route('daftar-laporan')" :active="request()->routeIs('daftar-laporan')">
                         {{ __('Laporan') }}
                     </x-nav-link>
