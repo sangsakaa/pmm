@@ -41,6 +41,7 @@
               </div>
             </div>
             <div id="blanko" class=" ">
+              @role('pengawas')
               <table class=" mt-1 w-full">
                 <thead>
                   <tr class=" border mt-2">
@@ -135,6 +136,7 @@
                   @endforeach
                 </tbody>
               </table>
+              @endrole
               <!-- <table class=" mt-2 w-full">
                 <thead>
                   <tr class=" border px-1">
