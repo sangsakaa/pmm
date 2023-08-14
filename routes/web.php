@@ -52,7 +52,7 @@ Route::get('add-modul', [ModulController::class, 'add'])->middleware(['auth'])->
 Route::post('add-modul', [ModulController::class, 'store'])->middleware(['auth'])->name('add-modul');
 
 Route::get('daftar-laporan', [LaporanContrller::class, 'index'])->middleware(['auth'])->name('daftar-laporan');
-Route::get('laporan-pmm/{laporan}', [LaporanContrller::class, 'view'])->middleware(['auth'])->name('daftar-laporan');
-Route::post('laporan-pmm/{laporan}', [LaporanContrller::class, 'Lap'])->middleware(['auth'])->name('daftar-laporan');
+Route::get('laporan-pmm/{laporan}', [LaporanContrller::class, 'view'])->middleware(['auth'])->name('laporan-pmm');
+Route::post('laporan-pmm/{laporan}', [LaporanContrller::class, 'Lap'])->middleware(['auth']);
 Route::post('daftar-laporan', [LaporanContrller::class, 'store'])->middleware(['auth'])->name('daftar-laporan');
 Route::post('dashboard', [UserManagementController::class, 'CreateUserGuru'])->middleware(['auth'])->name('dashboard');

@@ -28,7 +28,7 @@
                   <button class="bg-blue-700 text-white px-2 py-1 text-sm">BUAT PMM</button>
                 </form>
               </div>
-              @endrole
+
               <div>
                 <form action="/daftar-laporan" method="get" class="  text-sm gap-1 flex">
                   <input type="text" name="cari" value="{{ request('cari') }}" class=" dark:bg-dark-bg border border-green-800 text-green-800 rounded-md  py-0.5 " placeholder=" Cari .." autofocus>
@@ -73,7 +73,7 @@
                       {{$loop->iteration}}
                     </td>
                     <td class=" text-center border px-1 ">
-                      {{$item->nama_guru}}
+                      <a href="/laporan-pmm/{{$item->id}}"> {{$item->nama_guru}}</a>
                     </td>
                     <td class=" font-semibold text-red-700 px-1 w-1/4   text-wrap text-left">
                       {{$item->nama_topik}} <br>
@@ -201,6 +201,7 @@
 
               </table> -->
             </div>
+            @endrole
             <div class=" py-2">
             </div>
           </div>
