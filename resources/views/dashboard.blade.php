@@ -10,15 +10,25 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <p> You're logged in!</p>
-                    @role('super admin')
-                    <form action="/dashboard" method="post">
-                        @csrf
-                        <button class=" hover:bg-blue-900 bg-blue-600 px-2 py-1 text-white capitalize">buat Akun Guru</button>
-                    </form>
-                    @endrole
-                    @role('guru')
-                    <span> {{Auth::user()->name}}</span>
-                    @endrole
+                    @if(Auth::check())
+                    @if(Auth::user()->hasRole('pengawas'))
+                    {{-- Tampilkan konten khusus untuk pengawasan --}}
+                    <p>Selamat datang, Pengawasan!</p>
+                    @elseif(Auth::user()->hasRole('super admin'))
+                    {{-- Tampilkan konten khusus untuk admin --}}
+
+                    <p>Selamat datang, Admin!</p>
+                    @elseif(Auth::user()->hasRole('guru'))
+                    {{-- Tampilkan konten khusus untuk guru --}}
+                    <p>Selamat datang, Guru!</p>
+                    @else
+                    {{-- Tampilkan konten untuk pengguna umum --}}
+                    <p>Selamat datang, Pengguna!</p>
+                    @endif
+                    @else
+                    {{-- Tampilkan pesan untuk pengunjung yang belum login --}}
+                    <p>Silakan login untuk mengakses konten.</p>
+                    @endif
                 </div>
             </div>
         </div>
