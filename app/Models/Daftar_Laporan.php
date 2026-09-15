@@ -2,16 +2,28 @@
 
 namespace App\Models;
 
-use App\Models\Modul;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Daftar_Laporan extends Model
 {
     use HasFactory;
-    protected $table = "daftar_laporan";
-    public function Laporan()
+
+    protected $table = 'daftar_laporan';
+
+    protected $fillable = [
+        'laporan_id',
+        'modul_id',
+        'keterangan',
+    ];
+
+    public function laporan()
     {
-        return $this->hasMany(Modul::class, 'id',  'modul_id',);
+        return $this->belongsTo(Laporan::class, 'laporan_id');
+    }
+
+    public function modul()
+    {
+        return $this->belongsTo(Modul::class, 'modul_id');
     }
 }

@@ -8,13 +8,51 @@ use Illuminate\Database\Eloquent\Model;
 class Laporan extends Model
 {
     use HasFactory;
-    protected $table = "laporan";
-    public function Laporan()
+
+    protected $table = 'laporan';
+
+    protected $fillable = [
+        'guru_id',
+        'topik_id',
+        'status_pemeriksaan',
+        'catatan_pemeriksaan',
+        'diperiksa_oleh',
+        'diperiksa_at',
+    ];
+
+    protected $casts = [
+        'diperiksa_at' => 'datetime',
+    ];
+
+    /**
+     * Guru pemilik laporan
+     */
+    public function guru()
     {
-        return $this->hasMany(Daftar_Laporan::class,  'laporan_id', 'id');
+        return $this->belongsTo(Guru::class, 'guru_id');
     }
-    public function Topik()
+
+    /**
+     * Topik laporan
+     */
+    public function topik()
     {
-        return $this->hasMany(Modul::class, 'id',  'topik_id');
+        return $this->belongsTo(Topik::class, 'topik_id');
+    }
+
+    /**
+     * Detail modul laporan
+     */
+    public function daftarLaporan()
+    {
+        return $this->hasMany(Daftar_Laporan::class, 'laporan_id');
+    }
+
+    /**
+     * User yang memeriksa laporan
+     */
+    public function pemeriksa()
+    {
+        return $this->belongsTo(User::class, 'diperiksa_oleh');
     }
 }

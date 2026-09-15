@@ -51,8 +51,20 @@ Route::get('add-modul', [ModulController::class, 'add'])->middleware(['auth'])->
 Route::get('add-modul', [ModulController::class, 'add'])->middleware(['auth'])->name('add-modul');
 Route::post('add-modul', [ModulController::class, 'store'])->middleware(['auth'])->name('add-modul');
 
-Route::get('daftar-laporan', [LaporanContrller::class, 'index'])->middleware(['auth'])->name('daftar-laporan');
-Route::get('laporan-pmm/{laporan}', [LaporanContrller::class, 'view'])->middleware(['auth'])->name('laporan-pmm');
-Route::post('laporan-pmm/{laporan}', [LaporanContrller::class, 'Lap'])->middleware(['auth']);
-Route::post('daftar-laporan', [LaporanContrller::class, 'store'])->middleware(['auth'])->name('daftar-laporan');
-Route::post('dashboard', [UserManagementController::class, 'CreateUserGuru'])->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/daftar-laporan', [LaporanContrller::class, 'index'])
+        ->name('daftar-laporan');
+
+    Route::post('/daftar-laporan', [LaporanContrller::class, 'store'])
+        ->name('daftar-laporan.store');
+
+    Route::get('/laporan-pmm/{laporan}', [LaporanContrller::class, 'view'])
+        ->name('laporan-pmm');
+
+    Route::post('/laporan-pmm/{laporan}', [LaporanContrller::class, 'Lap'])
+        ->name('laporan-pmm.update');
+
+    Route::post('/laporan-pmm/{laporan}/periksa', [LaporanContrller::class, 'periksa'])
+        ->name('laporan-pmm.periksa');
+});
